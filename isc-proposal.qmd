@@ -1,10 +1,10 @@
 ---
 title: "Proposal Title"
 author:
-  - name: Annie Easley
-    orcid: 5555-5555-5555-5555
+  - name: Sunny Tseng
+    orcid: 0000-0002-8621-2244
     affiliations:
-      - "Lewis Research Center, National Aeronautics and Space Administration"
+      - "University of Northern British Columbia"
 
 date: today
 date-format: iso
@@ -18,10 +18,6 @@ format:
 bibliography: references.bib
 ---
 
-# 🚧🚧🚧 UNDER CONSTRUCTION 🚧🚧🚧
-
-This repository is currently being revisited.
-An update will be released in early September 2025.
 
 {{< include proposal/00-exec-summary.qmd >}}
 
