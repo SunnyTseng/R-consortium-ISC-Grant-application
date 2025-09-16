@@ -1,17 +1,24 @@
 ---
-title: "Proposal Title"
+title: "birdnetTools 2.0: Linking BirdNET Outputs to Occupancy Modeling in R"
 author:
   - name: Sunny Tseng
     orcid: 0000-0002-8621-2244
     affiliations:
       - "University of Northern British Columbia"
 
+  - name: Connor M. Wood
+    orcid: 0000-0002-0235-5214
+    affiliations:
+      - "Cornell Laboratory of Ornithology"
+
 date: today
 date-format: iso
 format:
   html:
+    figure-dir: proposal
     embed-resources: true
   hikmah-pdf:
+    figure-dir: proposal
     geometry:
       - left=1.25in
       - right=1.25in

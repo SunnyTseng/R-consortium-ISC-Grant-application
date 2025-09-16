@@ -7,6 +7,7 @@ how will you recover from them?
 This is where the proposal should be outlined.
 -->
 
+
 ## Overview
 <!--
 At a high-level address what your proposal is and how it will address
@@ -17,7 +18,24 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 
-## Detail
+This project will expand and improve the `birdnetTools` R package to streamline the integration of BirdNET outputs with occupancy modeling workflows in `spOccupancy`. The new functions will automate the conversion of BirdNET detections into formats required for occupancy modeling, supporting single- and multiple-species (spatial) analyses. Users will be able to go from audio recordings, to BirdNET output, to validated and cleaned detection data, and finally to occupancy modeling inputs and results—all within R. This will significantly enhance the usability of BirdNET data for ecological research.
+
+
+Concrete actions include:
+
+1. Creating new functions in `birdnetTools` to produce occupancy-ready data for `spOccupancy` functions (`PGOcc()`, `spPGOcc()`, `spMsPGOcc()`, and `msPGOcc()`), supporting single- and multiple-species (spatial) modeling.
+
+2. Developing example workflows and vignettes that demonstrate end-to-end analyses, from raw audio data to BirdNET detections, then to occupancy-ready data and modeling results.
+
+
+Estimated timeline:
+
+1. Months 1: Communicate with `spOccupancy` developers and occupancy modelling users to confirm required data formats.
+2. Months 2–4: Design and prototype occupancy-specific functions, gather user feedback, and develop example workflows and vignettes.
+3. Month 5: Community testing, feedback incorporation, and package new version release.
+
+
+## Minimum viable product, architecture, and external Dependencies
 <!--
 Go into more detail about the specifics of the project and how it delivers
 against the problem.
@@ -25,26 +43,26 @@ against the problem.
 Depending on project type the detail section should include:
 -->
 
-### Minimum Viable Product
 
 <!--
 What is the smallest thing you can build that delivers value to your users?
 -->
 
-### Architecture
+The minimum viable product will be a single function, `birdnetTools::birdnet_PGOcc()`, that converts BirdNET outputs into a detection history matrix and site covariate data frame compatible with the `spOccupancy::PGOcc()`. This enables single-species occupancy modeling.
+
 
 <!--
 What does the high-level architecture look like?
 -->
 
-### Assumptions
+The high-level architecture of the proposed solution involves expanding `birdnetTools` functions to transform species detections (output from `birdnetR`) into presence/absence and covariate data (input of `spOccupancy`). This adds an additional data wrangling path to the existing workflow, as illustrated in \autoref{fig:workflow}.
 
-<!--
-What assumptions are you making that, if proven false, would invalidate the project?
--->
 
-### External dependencies
+![Workflow from raw audio files to occupancy models. \label{fig:workflow}](proposal/architecture.jpg){fig-align="center" width="80%"}
+
 
 <!--
 What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
 -->
+
+`birdnetTools` relies on several R packages to support its core functionality, including `av`, `tuneR`, and `seewave` for audio processing, and `dplyr` for data wrangling. A full list of dependencies is available in the `DESCRIPTION` file of the `birdnetTools` repository.

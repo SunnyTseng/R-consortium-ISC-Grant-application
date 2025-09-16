@@ -17,11 +17,12 @@ go? Briefly describe all participants and the skills they will bring
 to the project.
 -->
 
-## Contributors
-<!--
-Who are the people who have actively helped with this proposal but
-won't necessarily be on the core project team later?
--->
+##### Sunny (Yi-Chin) Tseng – PhD Candidate, University of Northern British Columbia, Canada
+Sunny is an avian bioacoustic ecologist and the creator of `birdnetTools`, an R package for post-processing BirdNET output, which was funded by an NSERC grant in Canada. She has also developed `bbsTaiwan` R package through the rOpenSci Championship program, for processing Breeding Bird Survey data in Taiwan. Sunny’s expertise combines bioacoustics and quantitative ecology to monitor bird communities at landscape scales. She has conducted bird-focused research in Siberia, Taiwan, Canada, and Lithuania, collecting audio recordings from over 300 species. For this project, Sunny will lead package development, maintain the repository, and update functions and documentation based on user feedback.
+
+##### Connor M. Wood – Research Faculty, Cornell Lab of Ornithology
+Connor leads the BirdNET Ecology Team, focusing on the application of BirdNET algorithms for landscape-scale biodiversity monitoring and community ecology. He has extensive experience developing and implementing bioacoustic tools to inform conservation strategies. Connor’s research emphasizes community-driven science, designing flexible tools that can be used by researchers, managers, and local communities. He has applied BirdNET to monitor bird species across large regions, generating data that supports both species-level conservation and broader ecosystem management. For this project, Connor will provide expertise on occupancy modeling and statistical methods, ensuring the package outputs are ecologically relevant and meet the needs of end users.
+
 
 ## Consulted
 <!--
@@ -29,4 +30,12 @@ Who has been given the opportunity to provide feedback on the
 proposal? This should include any R Consortium & ISC members who the
 proposal has been discussed with.
 -->
+
+Stefan Kahl: creator of BirdNET; research faculty at the Cornell Lab & Technical University of Chemnitz
+
+Felix Guenther: creator of the birdnetR package which allows users to execute BirdNET within R
+
+Jeff Doser: creator of the spOccupancy package, one of the best R-based occupancy modeling tools available, asst. prof at North Carolina State
+
+
 
