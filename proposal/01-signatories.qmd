@@ -31,11 +31,11 @@ proposal? This should include any R Consortium & ISC members who the
 proposal has been discussed with.
 -->
 
-Stefan Kahl: creator of BirdNET; research faculty at the Cornell Lab & Technical University of Chemnitz
+- Stefan Kahl: creator of BirdNET; research faculty at the Cornell Laboratory of Ornithology & Chemnitz University of Technology
 
-Felix Guenther: creator of the birdnetR package which allows users to execute BirdNET within R
+- Felix Günther: creator of the `birdnetR` package which allows users to execute BirdNET within R
 
-Jeff Doser: creator of the spOccupancy package, one of the best R-based occupancy modeling tools available, asst. prof at North Carolina State
+- Jeff Doser: creator of the `spOccupancy` package; assistant professor at North Carolina State University
 
 
 

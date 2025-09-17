@@ -12,6 +12,22 @@ important because projects need to get up and running quickly.
  - [ ] Reporting framework
 -->
 
+The planning phase will be completed within the first month of the project (2025 Dec 31). Key activities include:
+
+  - [ ] Confirm and document open-source license (MIT). 
+
+  - [ ] Set up GitHub repository with contribution guidelines, code of conduct, and issue templates.
+
+  - [ ] Establish reporting and feedback workflow via GitHub Issues/Discussions.
+
+  - [ ] Draft initial project roadmap and share with collaborators for feedback.
+
+  - [ ] Schedule bi-weekly check-ins between project contributors.
+
+
+
+
+
 
 ## Technical delivery
 <!--
@@ -21,6 +37,19 @@ provide at least a high-level description of the implementation.
 Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
 -->
+
+The technical delivery phase will span months 2 to 5 of the project. Key milestones include:
+
+  - [ ] Month 2 (2026 Jan 31): Finalize function specifications and data format requirements in collaboration with `spOccupancy` developers.
+
+  - [ ] Month 3 (2026 Feb 28): Develop and test initial versions of occupancy-specific functions in `birdnetTools` (i.e., the minimum viable product).
+
+  - [ ] Month 4 (2026 Mar 31): Create example workflows and vignettes demonstrating end-to-end analyses.
+
+  - [ ] Month 5 (2026 Apr 30): Conduct community testing, gather feedback, refine functions, and prepare for package release.
+
+
+
 
 ## Other aspects
 
@@ -37,6 +66,18 @@ to be shared quarterly on the R Consortium blog.
  - [ ] UseR!
  - [ ] ISC meetings
 -->
+
+The project will be conducted in an open and transparent manner to maximize accessibility, usability, and community engagement.
+
+  - [ ] The code will be hosted publicly on GitHub under an MIT license, enabling collaboration, contributions, and long-term sustainability.
+
+  - [ ] User feedback will be actively incorporated through GitHub issues, and package versions will be updated regularly with a clear changelog.
+
+  - [ ] The package will be distributed via CRAN and/or the rOpenSci R-universe to ensure broad accessibility for R users worldwide.
+
+  - [ ] Project updates and outcomes will be communicated through posts on the R Consortium blog, as well as via relevant R community events (e.g., useR! conference, ISC meetings).
+
+
 
 ## Budget & funding plan
 
