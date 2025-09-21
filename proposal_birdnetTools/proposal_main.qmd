@@ -76,14 +76,15 @@ Connor leads the BirdNET Ecology Team, focusing on the application of BirdNET al
 Who has been given the opportunity to provide feedback on the
 proposal? This should include any R Consortium & ISC members who the
 proposal has been discussed with.
--->
-```
 
 -   Stefan Kahl: creator of BirdNET; research faculty at the Cornell Laboratory of Ornithology & Chemnitz University of Technology
 
 -   Felix Günther: creator of the `birdnetR` package which allows users to execute BirdNET within R
 
 -   Jeff Doser: creator of the `spOccupancy` package; assistant professor at North Carolina State University
+
+-->
+```
 
 # The Problem
 
@@ -273,11 +274,13 @@ out to us.
 The requested funds will primarily support personnel time for development, testing, and documentation of the new `birdnetTools` functionality. Costs are estimated for a five-month project divided into three milestones tied to deliverables.
 
 | Milestone | Timeline | Deliverables | Estimated cost (USD) |
-|------------------|------------------|------------------|------------------|
-| Requirement and design | 2025 Dec.1 - 31 | Consultation with `spOccupancy` developers and occupancy-modeling users; finalize data structure and function specifications. | \$704 |
-| Development & prototyping | 2026 Jan.1 - Mar.30 | Implement core functions (e.g., `birdnet_add_site()` and supporting tools), develop example workflows, and prepare vignettes for user feedback. | \$3,488 |
-| Testing & release | 2026 April.30 | Community testing, feedback incorporation, CRAN release of updated `birdnetTools`, and preparation of final documentation. | \$1,760 |
-| Total requested budget |  |  | \$5,952 |
+|----|----|----|----|
+| Phase 1 - consultation & format design | 2025 Dec.1 - 31 | Meet with spOccupancy developers/users to finalize data formats and function specs. | \$704 |
+| Phase 2 - Development & prototyping | 2026 Jan.1 - Mar.31 | Implement core functions, create example workflows. | \$3,488 |
+| Phase 3 - Testing & release | 2026 Apr.1 - 30 | Conduct community testing, refine code and documentation | \$1,706 |
+| Total |  |  | \$5,952 |
+
+
 
 # Success
 
