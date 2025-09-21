@@ -194,7 +194,7 @@ important because projects need to get up and running quickly.
 -->
 ```
 
-The planning phase will be completed within the first month of the project (2025 Dec 31):
+The planning phase will be completed within the first month of the project:
 
 -   [ ] Confirm and document open-source license (MIT).
 
@@ -220,13 +220,13 @@ and the ISC need to have a means of tracking delivery
 
 The technical delivery phase will span months 2 to 5 of the project. Key milestones include:
 
--   [ ] Month 2, by 2026 Feb.: Finalize function specifications and data format requirements in collaboration with `spOccupancy` developers.
+-   [ ] Month 2.: Finalize function specifications and data format requirements in collaboration with `spOccupancy` developers.
 
--   [ ] Month 3, by March: Develop and test initial versions of occupancy-specific functions in `birdnetTools` (i.e., the minimum viable product).
+-   [ ] Month 3: Develop and test initial versions of occupancy-specific functions in `birdnetTools` (i.e., the minimum viable product).
 
--   [ ] Month 4, by April: Create example workflows and vignettes demonstrating end-to-end analyses.
+-   [ ] Month 4: Create example workflows and vignettes demonstrating end-to-end analyses.
 
--   [ ] Month 5, by May: Conduct community testing, gather feedback, refine functions, and prepare for package release.
+-   [ ] Month 5: Conduct community testing, gather feedback, refine functions, and prepare for package release.
 
 -   [ ] Long term: The package will be distributed via CRAN and/or the rOpenSci R-universe to ensure broad accessibility for R users worldwide.
 
@@ -275,8 +275,8 @@ The requested funds will primarily support personnel time for development, testi
 
 | Milestone | Timeline | Deliverables | Estimated cost (USD) |
 |----|----|----|----|
-| Phase 1 - consultation & format design | 2025 Dec.1 - 31 | Meet with spOccupancy developers/users to finalize data formats and function specs. | \$704 |
-| Phase 2 - Development & prototyping | 2026 Jan.1 - Mar.31 | Implement core functions, create example workflows. | \$3,488 |
+| Phase 1 - Consultation | 2025 Dec.1 - 31 | Meet with spOccupancy developers/users to finalize data formats and function specs. | \$704 |
+| Phase 2 - Development  | 2026 Jan.1 - Mar.31 | Implement core functions, create example workflows. | \$3,488 |
 | Phase 3 - Testing & release | 2026 Apr.1 - 30 | Conduct community testing, refine code and documentation | \$1,706 |
 | Total |  |  | \$5,952 |
 
