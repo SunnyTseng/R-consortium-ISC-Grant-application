@@ -3,6 +3,7 @@
 
 - Main folder for proposal writing: ./proposal_birdnetTools
 - [R Consortium](https://www.r-consortium.org).
+- [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html)
 
 
 
@@ -41,18 +42,6 @@ Here we detail useful guidance notes on making proposals to the ISC but you shou
 - You *can* submit a proposal on your own, but it's really recommended to get engagement from the community (and the ISC) first
 - Proposals should be submitted through the form on the [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html) page
 
-## Making your proposal
-
-This is a boilerplate repository that you will need to fork, title appropriately and start filling in.
-
--   Use the "Use this template" button on GitHub
--   Create a new repository with a name to reflect your proposal
--   Create a new Positron/RStudio/IDE project from version control and use the git URL for the repo
--   Write an overview of the proposal instead of this boilerplate for the README
--   Start completing the relevant qmd pages of the proposal
--   Render `isc-proposal.qmd` to build the document locally
--   Regularly commit and push the changes to GitHub
--   Solicit feedback and contributions from others
 
 
 ## License
