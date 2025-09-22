@@ -2,7 +2,7 @@
 
 
 ## Useful links
-- [Proposal file folder](https://github.com/SunnyTseng/R-consortium-ISC-Grant-application/tree/main/proposal_birdnetTools)
+- [Proposal file folder](https://github.com/SunnyTseng/R-consortium-ISC-Grant-application/tree/main/proposal_birdnetTools): edit and render the quarto file, then the .pdf and .html will be generated automatically.
 - [R Consortium](https://www.r-consortium.org).
 - [ISC Grant Program](https://r-consortium.org/all-projects/callforproposals.html)
 
