@@ -69,10 +69,11 @@ Sunny is an avian bioacoustic ecologist and the creator of `birdnetTools`, an R 
 
 Connor leads the BirdNET Ecology Team, focusing on the application of BirdNET algorithms for landscape-scale biodiversity monitoring and community ecology. He has extensive experience developing and implementing bioacoustic tools to inform conservation strategies, and regularly uses BirdNET outputs as occupancy model inputs. For this project, Connor will provide expertise on occupancy modeling and statistical methods, ensuring the package outputs are ecologically relevant and meet the needs of end users.
 
-## Consulted
-
 ```{=html}
 <!--
+
+## Consulted
+
 Who has been given the opportunity to provide feedback on the
 proposal? This should include any R Consortium & ISC members who the
 proposal has been discussed with.
@@ -107,7 +108,7 @@ It is important to cover:
 
 BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, which can identify more than 6,000 species, most of them birds, from audio data, making it a powerful tool for large-scale avian monitoring [@kahl:2021]. R packages such as `birdnetR` (to run BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] allow users to streamline acoustic data analysis. One of the most fundamental applications of BirdNET detections is generating species presence/absence data across sites and time periods for occupancy modeling, which provides essential information on species distribution, detectability, and probability of occurrence (e.g., @wood:2023). However, preparing BirdNET outputs to become occupancy model inputs is often challenging, particularly for ecologists without extensive programming experience. Existing R tools for occupancy modelling, like `unmarked`, `ubms`, and `spOccupancy` [@doser:2022], require data in very specific formats and involve complex, multi-step workflows, creating barriers to efficient and reproducible analysis.
 
-This project aims to reduce or eliminate the current gap between the generation of animal encounter data by BirdNET and the use of that data in statistical models. Specifically, we will improve and expand the functionality of `birdnetTools` to facilitate the converstion of raw BirdNET outputs into usable population data. Because `birdnetTools` already offers generic tools for data wrangling, summarization, and validation, it is the natural point in the audio-to-inference pipeline for necessary improvements. We will exand the featureset of `birdnetTools` to provide streamlined workflows specifically tailored for occupancy modeling. By designing functions that automate the transformation of BirdNET outputs into formats compatible with occupancy modeling packages, we can significantly reduce the technical burden on users, enabling ecologists and conservation practitioners to more easily leverage passive acoustic monitoring data for occupancy analyses and generate reproducible ecological insights.
+This project aims to reduce the current gap between the generation of animal encounter data by BirdNET and the use of that data in statistical models. Specifically, we will improve and expand the functionality of `birdnetTools` to facilitate the converstion of raw BirdNET outputs into usable population data. Because `birdnetTools` already offers generic tools for data wrangling, summarization, and validation, it is the natural point in the audio-to-inference pipeline for necessary improvements. We will expand the features to provide streamlined workflows specifically tailored for occupancy modeling. By designing functions that automate the transformation of BirdNET outputs into formats compatible with occupancy modeling packages, we enable ecologists and conservation practitioners to more easily leverage passive acoustic monitoring data for occupancy analyses and generate reproducible ecological insights.
 
 # The proposal
 
@@ -146,7 +147,7 @@ The proposed solution expands `birdnetTools` functions to transform species dete
 -   **Site covariates** (sites × covariates), such as habitat type, elevation, or other site-level descriptors.
 -   **Survey covariates** (sites × surveys × covariates), such as weather conditions, time of day.
 
-New functions will streamline the creation of the **detection matrix** by building on existing `birdnetTools` capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information, aggregate detections, and reshape outputs into the formats required by `spOccupancy`. The proposed workflow is shown in @fig-workflow B. 
+New functions will streamline the creation of the **detection matrix** by building on existing `birdnetTools` capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information, aggregate detections, and reshape outputs into the formats required by `spOccupancy`. The proposed workflow is shown in @fig-workflow B.
 
 ![Workflow from raw audio files to occupancy models. Black arrows and graphics represent the current workflow, while red text and arrows indicate the proposed extensions for the package expansion.](./figure/architecture_1.jpg){#fig-workflow fig-align="center" width="80%"}
 
@@ -167,10 +168,7 @@ What is the smallest thing you can build that delivers value to your users?
 -->
 ```
 
-The minimum viable product will be a single function, `birdnetTools::birdnet_add_site()`, which extracts and processes site-level information from BirdNET outputs. This function is essential for creating the detection matrix required for occupancy modeling. Over time, it will be integrated with additional tools and expanded to support the full suite of `spOccupancy` functions (`PGOcc()`, `spPGOcc()`, `spMsPGOcc()`, and `msPGOcc()`), enabling single- and multi-species spatial modeling.
-
-Connor's alt text:
-The minimum viable product will be a single function, `birdnetTools::birdnet_det_mat()`, which converts BirdNET outputs into a **detection matrix** format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. `birdnetTools` can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy`(e.g., functions `PGOcc()` and `spPGOcc()`) and `unmarked` (e.g., function `occu()`; package `ubms` works direclty with `unmarked` input objects so no further adaptation would be required). 
+The minimum viable product will be a single function, `birdnetTools::birdnet_det_mat()`, which converts BirdNET outputs into a **detection matrix** format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. `birdnetTools` can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site\*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy`(e.g., functions `PGOcc()` and `spPGOcc()`) and `unmarked` (e.g., function `occu()`; package `ubms` works direclty with `unmarked` input objects so no further adaptation would be required).
 
 ```{=html}
 <!--
@@ -274,16 +272,14 @@ out to us.
 -->
 ```
 
-The requested funds will primarily support personnel time for development, testing, and documentation of the new `birdnetTools` functionality. Costs are estimated for a five-month project divided into three milestones tied to deliverables.
+We request funding to support personnel time for developing, testing, and documenting the new \`birdnetTools functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 31/hour**.
 
-| Milestone | Timeline | Deliverables | Estimated cost (USD) |
-|----|----|----|----|
-| Phase 1 - Consultation | 2025 Dec.1 - 31 | Meet with spOccupancy developers/users to finalize data formats and function specs. | \$704 |
-| Phase 2 - Development  | 2026 Jan.1 - Mar.31 | Implement core functions, create example workflows. | \$3,488 |
-| Phase 3 - Testing & release | 2026 Apr.1 - 30 | Conduct community testing, refine code and documentation | \$1,706 |
-| Total |  |  | \$5,952 |
-
-
+| Milestone | Deliverables | Hours (Sunny + Connor) | Estimated cost (USD) |
+|------------------|------------------|------------------|------------------|
+| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$868 |
+| Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$2,976 |
+| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 40 + 28 | \$2,108 |
+| Total |  | 132 + 60 = 192 | \$5,952 |
 
 # Success
 
