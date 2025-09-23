@@ -272,14 +272,14 @@ out to us.
 -->
 ```
 
-We request funding to support personnel time for developing, testing, and documenting the new \`birdnetTools functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 31/hour**.
+We request funding to support personnel time for developing, testing, and documenting the new \`birdnetTools functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 32/hour**.
 
 | Milestone | Deliverables | Hours (Sunny + Connor) | Estimated cost (USD) |
 |------------------|------------------|------------------|------------------|
-| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$868 |
-| Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$2,976 |
-| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 40 + 28 | \$2,108 |
-| Total |  | 132 + 60 = 192 | \$5,952 |
+| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$896 |
+| Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$3,072 |
+| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 40 + 28 | \$2,176 |
+| Total |  | 132 + 60 = 192 | \$6,144 |
 
 # Success
 
