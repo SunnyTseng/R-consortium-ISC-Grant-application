@@ -147,7 +147,7 @@ The proposed solution expands `birdnetTools` functions to transform species dete
 -   **Site covariates** (sites × covariates), such as habitat type, elevation, or other site-level descriptors.
 -   **Survey covariates** (sites × surveys × covariates), such as weather conditions, time of day.
 
-New functions will streamline the creation of the **detection matrix** by building on existing `birdnetTools` capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information, aggregate detections, and reshape outputs into the formats required by `spOccupancy`. The proposed workflow is shown in @fig-workflow B.
+New function(s) will streamline the creation of the **detection matrix** by building on existing `birdnetTools` capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information, aggregate detections, and reshape outputs into the formats required by three of the most common R-based occupancy modeling packages, `spOccupancy`, `unmarked`, and `ubms`. The proposed workflow is shown in @fig-workflow B.
 
 ![Workflow from raw audio files to occupancy models. Black arrows and graphics represent the current workflow, while red text and arrows indicate the proposed extensions for the package expansion.](./figure/architecture_1.jpg){#fig-workflow fig-align="center" width="80%"}
 
@@ -168,7 +168,7 @@ What is the smallest thing you can build that delivers value to your users?
 -->
 ```
 
-The minimum viable product will be a single function, `birdnetTools::birdnet_det_mat()`, which converts BirdNET outputs into a **detection matrix** format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. `birdnetTools` can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site\*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy`(e.g., functions `PGOcc()` and `spPGOcc()`) and `unmarked` (e.g., function `occu()`; package `ubms` works direclty with `unmarked` input objects so no further adaptation would be required).
+The minimum viable product will be a single function, `birdnetTools::birdnet_det_mat()`, which converts BirdNET outputs into a **detection matrix** format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. `birdnetTools` can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site\*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy` (e.g., functions `PGOcc()` or `spPGOcc()`), `unmarked` (e.g., functions `occu()` or `colext()`), or `ubms` (e.g., functions `stan_occu()` or `stan_colext()`).
 
 ```{=html}
 <!--
