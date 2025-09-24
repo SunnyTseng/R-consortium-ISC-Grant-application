@@ -36,9 +36,11 @@ It should be a comprehensive high-level overview that captures the essence of th
 -->
 ```
 
-Passive acoustic monitoring is revolutionizing biodiversity research, but converting BirdNET’s raw detection output into the structured data required for occupancy modeling in R remains a major barrier for ecologists. `birdnetTools` 2.0 will close this gap by expanding the existing `birdnetTools` package to generate detection matrices directly compatible with `spOccupancy`, `unmarked`, and `ubms`, three of the most common R-based occupancy modeling packages. Building on current functions for data import, cleaning, and validation, we will develop new core function(s) (e.g., `birdnet_det_mat()`) and create end-to-end vignettes. This project will lower technical barriers, enable reproducible analyses from raw audio to occupancy inference, and strengthen the R ecosystem for large-scale avian monitoring and conservation.
+Passive acoustic monitoring, using sound recorders to monitor wildlife, is transforming how scientists study biodiversity. Machine learning tools such as BirdNET, one of the most advanced algorithms available, can automatically identify bird species from thousands of hours of audio recordings. A powerful way to use these data is through occupancy modeling, which estimates where species occur and how likely they are to be detected. However, converting BirdNET’s raw output into the structured format required for occupancy analysis in R remains a major hurdle for many ecologists.
 
-# Signatories
+`birdnetTools` 2.0 will remove this barrier by expanding the existing `birdnetTools` R package to produce detection matrices ready for three of the most widely used occupancy modeling packages: `spOccupancy`, `unmarked`, and `ubms`. Building on current tools for data import, cleaning, and validation, we will create new core function(s) (e.g., `birdnet_det_mat()`) and user-friendly, step-by-step tutorials. This upgrade will make it far easier to move from raw audio to reproducible occupancy estimates, empowering researchers and conservationists to monitor birds at large scales and strengthen the R ecosystem for biodiversity science.
+
+# Signatories (project team)
 
 ```{=html}
 <!--
@@ -52,10 +54,12 @@ are proposed.
 -->
 ```
 
+```{=html}
+
+<!--
+
 ## Project team
 
-```{=html}
-<!--
 Who are the people responsible for actually delivering the project if
 the proposal gets accepted and are already signed up and rearing to
 go? Briefly describe all participants and the skills they will bring
@@ -274,14 +278,14 @@ out to us.
 -->
 ```
 
-We request funding to support personnel time for developing, testing, and documenting the new \`birdnetTools functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 36/hour**.
+We request funding to support personnel time for developing, testing, and documenting the new `birdnetTools` functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 36/hour**.
 
 | Milestone | Deliverables | Hours (Sunny + Connor) | Estimated cost (USD) |
 |------------------|------------------|------------------|------------------|
 | Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$1,008 |
 | Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$3,456 |
-| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 40 + 28 | \$2,448 |
-| Total |  | 132 + 60 = 192 | \$6,912 |
+| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 60 + 28 | \$3,168 |
+| Total |  | 152 + 60 = 212 | \$7,632 |
 
 # Success
 
@@ -292,27 +296,38 @@ thorough understanding going in of what the risks are to delivery
 -->
 ```
 
-## Definition of done
+
+This project will be considered successful when `birdnetTools` 2.0 provides a stable, CRAN-ready release that enables users to convert BirdNET output into detection matrices and run occupancy models in `spOccupancy`, `unmarked`, or `ubms` with minimal additional coding. Success will be measured by (1) the release of the new core function(s) (e.g., `birdnet_det_mat()`) and accompanying vignettes, (2) positive feedback and reproducible test results from community beta testing, and (3) adoption of the new workflow by early users as demonstrated through GitHub issues, discussions, and citations.
+
+
+
 
 ```{=html}
+
 <!--
+## Definition of done
+
 What does success look like?
 -->
 ```
 
-## Measuring success
+
 
 ```{=html}
 <!--
+## Measuring success
+
 How will we know when success is achieved, what markers can we use
 along the way
 -->
 ```
 
-## Future work
+
 
 ```{=html}
 <!--
+## Future work
+
 How could this be extended / developed in the future by yourself
 and/or the community in general?
 -->
