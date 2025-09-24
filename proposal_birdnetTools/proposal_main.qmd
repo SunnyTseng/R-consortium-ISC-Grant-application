@@ -4,12 +4,12 @@ author:
   - name: Sunny Tseng
     orcid: 0000-0002-8621-2244
     affiliations:
-      - "University of Northern British Columbia"
+      - "Natural Resources and Environmental Studies, University of Northern British Columbia"
 
   - name: Connor M. Wood
     orcid: 0000-0002-0235-5214
     affiliations:
-      - "Cornell Laboratory of Ornithology"
+      - "K. Lisa Yang Center for Conservation Bioacoustics, Cornell Laboratory of Ornithology"
 
 date: today
 date-format: iso
@@ -35,6 +35,11 @@ This section provides a condensed view of the entire proposal, one page long.
 It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
 -->
 ```
+
+
+Passive acoustic monitoring is revolutionizing biodiversity research, but converting BirdNET’s raw detection output into the structured data required for occupancy modeling in R remains a major barrier for ecologists. `birdnetTools` 2.0 will close this gap by expanding the existing `birdnetTools` package to generate detection matrices directly compatible with `spOccupancy`, `unmarked`, and `ubms`, three of the most common R-based occupancy modeling packages. Building on current functions for data import, cleaning, and validation, we will develop new core function(s) (e.g., `birdnet_det_mat()`) and create end-to-end vignettes. This project will lower technical barriers, enable reproducible analyses from raw audio to occupancy inference, and strengthen the R ecosystem for large-scale avian monitoring and conservation.
+
+
 
 # Signatories
 
@@ -106,9 +111,11 @@ It is important to cover:
 -->
 ```
 
-BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, which can identify more than 6,000 species, most of them birds, from audio data, making it a powerful tool for large-scale avian monitoring [@kahl:2021]. R packages such as `birdnetR` (to run BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] allow users to streamline acoustic data analysis. One of the most fundamental applications of BirdNET detections is generating species presence/absence data across sites and time periods for occupancy modeling, which provides essential information on species distribution, detectability, and probability of occurrence (e.g., @wood:2023). However, preparing BirdNET outputs to become occupancy model inputs is often challenging, particularly for ecologists without extensive programming experience. Existing R tools for occupancy modelling, like `unmarked`, `ubms`, and `spOccupancy` [@doser:2022], require data in very specific formats and involve complex, multi-step workflows, creating barriers to efficient and reproducible analysis.
 
-This project aims to reduce the current gap between the generation of animal encounter data by BirdNET and the use of that data in statistical models. Specifically, we will improve and expand the functionality of `birdnetTools` to facilitate the converstion of raw BirdNET outputs into usable population data. Because `birdnetTools` already offers generic tools for data wrangling, summarization, and validation, it is the natural point in the audio-to-inference pipeline for necessary improvements. We will expand the features to provide streamlined workflows specifically tailored for occupancy modeling. By designing functions that automate the transformation of BirdNET outputs into formats compatible with occupancy modeling packages, we enable ecologists and conservation practitioners to more easily leverage passive acoustic monitoring data for occupancy analyses and generate reproducible ecological insights.
+BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, capable of recognizing more than 6,000 species [@kahl:2021]. R packages such as `birdnetR` (for running BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] streamline acoustic data analysis. A key application of BirdNET detections is generating species presence–absence data for occupancy modeling, which provides estimates of species distribution, detectability, and occurrence (e.g., @wood:2023). However, preparing BirdNET outputs for these models is challenging, especially for users without advanced programming skills. Existing R packages for occupancy analysis, including `unmarked`, `ubms`, and `spOccupancy` [@doser:2022], require highly specific data formats and multi-step workflows, creating barriers to efficient and reproducible analysis.
+
+This project aims to reduce the gap between BirdNET’s raw detection tables and the structured inputs required by occupancy models. By enhancing `birdnetTools`, which already handles data import, cleaning, and summarization, we will add function(s) to transform BirdNET predictions into detection matrices and provide streamlined workflows specifically tailored for occupancy modeling. This project will enable ecologists and conservation practitioners to move from raw audio to model-ready data with minimal effort.
+
 
 # The proposal
 
@@ -141,7 +148,7 @@ What does the high-level architecture look like?
 -->
 ```
 
-The proposed solution expands `birdnetTools` functions to transform species detections (output from `birdnetR`) into presence/absence detection matrix (input for `spOccupancy`). This adds a new data-wrangling path to the existing workflow, as illustrated in @fig-workflow A. Occupancy modeling requires three key data components:
+We will expand `birdnetTools` functions to transform BirdNET detections into presence/absence detection matrix (input for `spOccupancy`, `unmarked`, and `ubms`). This adds a new data-wrangling path to the existing workflow, as illustrated in @fig-workflow A. Occupancy modeling requires three key data components:
 
 -   **Detection matrix** (sites × surveys) indicating species presence (1) or absence (0).
 -   **Site covariates** (sites × covariates), such as habitat type, elevation, or other site-level descriptors.

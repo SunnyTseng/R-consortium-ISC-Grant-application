@@ -2180,7 +2180,7 @@ vertical-align: -.125em;
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            University of Northern British Columbia
+            Natural Resources and Environmental Studies, University of Northern British Columbia
           </p>
       </div>
     <div class="quarto-title-meta-contents">
@@ -2188,7 +2188,7 @@ vertical-align: -.125em;
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Cornell Laboratory of Ornithology
+            K. Lisa Yang Center for Conservation Bioacoustics, Cornell Laboratory of Ornithology
           </p>
       </div>
   </div>
@@ -2217,6 +2217,7 @@ vertical-align: -.125em;
 This section provides a condensed view of the entire proposal, one page long.
 It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
 -->
+<p>Passive acoustic monitoring is revolutionizing biodiversity research, but converting BirdNET’s raw detection output into the structured data required for occupancy modeling in R remains a major barrier for ecologists. <code>birdnetTools</code> 2.0 will close this gap by expanding the existing <code>birdnetTools</code> package to generate detection matrices directly compatible with <code>spOccupancy</code>, <code>unmarked</code>, and <code>ubms</code>, three of the most common R-based occupancy modeling packages. Building on current functions for data import, cleaning, and validation, we will develop new core function(s) (e.g., <code>birdnet_det_mat()</code>) and create end-to-end vignettes. This project will lower technical barriers, enable reproducible analyses from raw audio to occupancy inference, and strengthen the R ecosystem for large-scale avian monitoring and conservation.</p>
 </section>
 <section id="signatories" class="level1">
 <h1>Signatories</h1>
@@ -2303,13 +2304,13 @@ Include concrete actions you will take and estimated timeline.
 <!--
 What does the high-level architecture look like?
 -->
-<p>The proposed solution expands <code>birdnetTools</code> functions to transform species detections (output from <code>birdnetR</code>) into presence/absence detection matrix (input for <code>spOccupancy</code>). This adds a new data-wrangling path to the existing workflow, as illustrated in <a href="#fig-workflow" class="quarto-xref">Figure 1</a> A. Occupancy modeling requires three key data components:</p>
+<p>The proposed solution expands <code>birdnetTools</code> functions to transform species detections (output from <code>birdnetR</code>) into presence/absence detection matrix (input for <code>spOccupancy</code>, <code>unmarked</code>, and <code>ubms</code>). This adds a new data-wrangling path to the existing workflow, as illustrated in <a href="#fig-workflow" class="quarto-xref">Figure 1</a> A. Occupancy modeling requires three key data components:</p>
 <ul>
 <li><strong>Detection matrix</strong> (sites × surveys) indicating species presence (1) or absence (0).</li>
 <li><strong>Site covariates</strong> (sites × covariates), such as habitat type, elevation, or other site-level descriptors.</li>
 <li><strong>Survey covariates</strong> (sites × surveys × covariates), such as weather conditions, time of day.</li>
 </ul>
-<p>New functions will streamline the creation of the <strong>detection matrix</strong> by building on existing <code>birdnetTools</code> capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information, aggregate detections, and reshape outputs into the formats required by <code>spOccupancy</code>. The proposed workflow is shown in <a href="#fig-workflow" class="quarto-xref">Figure 1</a> B.</p>
+<p>New function(s) will streamline the creation of the <strong>detection matrix</strong> by building on existing <code>birdnetTools</code> capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information, aggregate detections, and reshape outputs into the formats required by three of the most common R-based occupancy modeling packages, <code>spOccupancy</code>, <code>unmarked</code>, and <code>ubms</code>. The proposed workflow is shown in <a href="#fig-workflow" class="quarto-xref">Figure 1</a> B.</p>
 <div id="fig-workflow" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2332,7 +2333,7 @@ Depending on project type the detail section should include:
 <!--
 What is the smallest thing you can build that delivers value to your users?
 -->
-<p>The minimum viable product will be a single function, <code>birdnetTools::birdnet_det_mat()</code>, which converts BirdNET outputs into a <strong>detection matrix</strong> format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. <code>birdnetTools</code> can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the <strong>detection matrix</strong>, can readily be ingested by <code>spOccupancy</code>(e.g., functions <code>PGOcc()</code> and <code>spPGOcc()</code>) and <code>unmarked</code> (e.g., function <code>occu()</code>; package <code>ubms</code> works direclty with <code>unmarked</code> input objects so no further adaptation would be required).</p>
+<p>The minimum viable product will be a single function, <code>birdnetTools::birdnet_det_mat()</code>, which converts BirdNET outputs into a <strong>detection matrix</strong> format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. <code>birdnetTools</code> can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the <strong>detection matrix</strong>, can readily be ingested by <code>spOccupancy</code> (e.g., functions <code>PGOcc()</code> or <code>spPGOcc()</code>), <code>unmarked</code> (e.g., functions <code>occu()</code> or <code>colext()</code>), or <code>ubms</code> (e.g., functions <code>stan_occu()</code> or <code>stan_colext()</code>).</p>
 <!--
 What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
 -->
