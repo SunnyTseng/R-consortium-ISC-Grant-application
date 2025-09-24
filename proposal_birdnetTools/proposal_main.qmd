@@ -36,10 +36,7 @@ It should be a comprehensive high-level overview that captures the essence of th
 -->
 ```
 
-
 Passive acoustic monitoring is revolutionizing biodiversity research, but converting BirdNET’s raw detection output into the structured data required for occupancy modeling in R remains a major barrier for ecologists. `birdnetTools` 2.0 will close this gap by expanding the existing `birdnetTools` package to generate detection matrices directly compatible with `spOccupancy`, `unmarked`, and `ubms`, three of the most common R-based occupancy modeling packages. Building on current functions for data import, cleaning, and validation, we will develop new core function(s) (e.g., `birdnet_det_mat()`) and create end-to-end vignettes. This project will lower technical barriers, enable reproducible analyses from raw audio to occupancy inference, and strengthen the R ecosystem for large-scale avian monitoring and conservation.
-
-
 
 # Signatories
 
@@ -111,11 +108,9 @@ It is important to cover:
 -->
 ```
 
-
 BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, capable of recognizing more than 6,000 species [@kahl:2021]. R packages such as `birdnetR` (for running BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] streamline acoustic data analysis. A key application of BirdNET detections is generating species presence–absence data for occupancy modeling, which provides estimates of species distribution, detectability, and occurrence (e.g., @wood:2023). However, preparing BirdNET outputs for these models is challenging, especially for users without advanced programming skills. Existing R packages for occupancy analysis, including `unmarked`, `ubms`, and `spOccupancy` [@doser:2022], require highly specific data formats and multi-step workflows, creating barriers to efficient and reproducible analysis.
 
 This project aims to reduce the gap between BirdNET’s raw detection tables and the structured inputs required by occupancy models. By enhancing `birdnetTools`, which already handles data import, cleaning, and summarization, we will add function(s) to transform BirdNET predictions into detection matrices and provide streamlined workflows specifically tailored for occupancy modeling. This project will enable ecologists and conservation practitioners to move from raw audio to model-ready data with minimal effort.
-
 
 # The proposal
 
@@ -175,7 +170,7 @@ What is the smallest thing you can build that delivers value to your users?
 -->
 ```
 
-The minimum viable product will be a single function, `birdnetTools::birdnet_det_mat()`, which converts BirdNET outputs into a **detection matrix** format - the critical missing piece in the existing software ecosystem. In short, BirdNET outputs are indefinitely long, with individual rows containing species predictions with associated metatdata. `birdnetTools` can already extract date and time information and compile species-by-species tables. Building on these capabilities, we will enable the streamlined conversion of the long-format output tables into the more consolidate site\*day bins containing 1s (species observed above a specified score), 0s (audio recorded but no predictions above a specificed score), and NAs (no audio recorded during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy` (e.g., functions `PGOcc()` or `spPGOcc()`), `unmarked` (e.g., functions `occu()` or `colext()`), or `ubms` (e.g., functions `stan_occu()` or `stan_colext()`).
+The minimum viable product will be a core function, `birdnet_det_mat()`, which converts BirdNET’s long-format prediction tables into a site × survey **detection matrix**, the critical missing piece in the existing software ecosystem.. This matrix will contain 1s (species detected above a specified confidence score), 0s (audio recorded but no qualifying detections), and NAs (no recording during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy` (e.g., functions `PGOcc()` or `spPGOcc()`), `unmarked` (e.g., functions `occu()` or `colext()`), or `ubms` (e.g., functions `stan_occu()` or `stan_colext()`).
 
 ```{=html}
 <!--
@@ -279,14 +274,14 @@ out to us.
 -->
 ```
 
-We request funding to support personnel time for developing, testing, and documenting the new \`birdnetTools functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 32/hour**.
+We request funding to support personnel time for developing, testing, and documenting the new \`birdnetTools functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 36/hour**.
 
 | Milestone | Deliverables | Hours (Sunny + Connor) | Estimated cost (USD) |
 |------------------|------------------|------------------|------------------|
-| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$896 |
-| Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$3,072 |
-| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 40 + 28 | \$2,176 |
-| Total |  | 132 + 60 = 192 | \$6,144 |
+| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$1,008 |
+| Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$3,456 |
+| Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 40 + 28 | \$2,448 |
+| Total |  | 132 + 60 = 192 | \$6,912 |
 
 # Success
 
