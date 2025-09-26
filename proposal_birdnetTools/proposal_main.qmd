@@ -349,5 +349,7 @@ and/or the community in general?
 -->
 ```
 
+# References
+
 ::: refs
 :::
