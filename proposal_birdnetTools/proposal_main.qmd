@@ -14,6 +14,7 @@ author:
 date: today
 date-format: iso
 format:
+
   pdf:
     figure-dir: figure
     geometry:
@@ -33,9 +34,11 @@ It should be a comprehensive high-level overview that captures the essence of th
 -->
 ```
 
-Passive acoustic monitoring, using sound recorders to monitor wildlife, is transforming how scientists study biodiversity. Machine learning tools such as BirdNET, one of the most advanced algorithms available, can automatically identify bird species from thousands of hours of audio recordings. A powerful way to use these data is through occupancy modeling, which estimates where species occur and how likely they are to be detected. However, converting BirdNET’s raw output into the structured format required for occupancy analysis in R remains a major hurdle for many ecologists.
 
-`birdnetTools` 2.0 will remove this barrier by expanding the existing `birdnetTools` R package to produce detection matrices ready for three of the most widely used occupancy modeling packages: `spOccupancy`, `unmarked`, and `ubms`. Building on current tools for data import, cleaning, and validation, we will create new core function(s) (e.g., `birdnet_det_mat()`) and user-friendly, step-by-step tutorials. This upgrade will make it far easier to move from raw audio to reproducible occupancy estimates, empowering researchers and conservationists to monitor birds at large scales and strengthen the R ecosystem for biodiversity science.
+
+Passive acoustic monitoring is transforming biodiversity research, allowing scientists to study birds across vast landscapes using audio recordings. Machine learning tools such as BirdNET can automatically identify thousands of species, but converting its outputs into the structured format required for occupancy modeling—a key method for estimating where species occur and how likely they are to be detected—remains a major hurdle. `birdnetTools 2.0` will remove this barrier by expanding the existing package to produce detection matrices compatible with widely used occupancy modeling R packages: `spOccupancy`, `unmarked`, and `ubms`. By streamlining data import, cleaning, validation, and preparation for modeling, this upgrade will make it easier for researchers and conservationists to generate reproducible occupancy estimates from raw audio recordings. The project will also include step-by-step tutorials and example workflows, empowering ecologists to monitor bird populations at large scales and strengthening the R ecosystem for biodiversity science.
+
+
 
 # Signatories (project team)
 
@@ -109,9 +112,11 @@ It is important to cover:
 -->
 ```
 
-BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, capable of recognizing more than 6,000 species [@kahl:2021]. R packages such as `birdnetR` (for running BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] streamline acoustic data analysis. A key application of BirdNET outputs is generating species presence–absence data for occupancy modeling, which provides estimates of species distribution, detectability, and occurrence (e.g., @wood:2023). However, preparing BirdNET outputs for these models is challenging, especially for users without advanced programming skills. Existing R packages for occupancy analysis, including `unmarked` [@fiske:2011], `ubms` [@kellner:2021], and `spOccupancy` [@doser:2022], require highly specific data formats and multi-step workflows, creating barriers to efficient and reproducible analysis.
 
-This project aims to reduce the gap between BirdNET’s raw detection tables and the structured inputs required by occupancy models. By enhancing `birdnetTools`, which already handles data import, cleaning, and summarization, we will add function(s) to transform BirdNET predictions into detection matrices and provide streamlined workflows specifically tailored for occupancy modeling. By facilitating the linkage of existing R packages, this project will enable ecologists and conservation practitioners to move from raw audio to model-ready data with minimal effort.
+BirdNET is a leading algorithm for automated bird species identification from audio recordings, capable of recognizing over 6,000 species [@kahl:2021]. R packages such as `birdnetR` (for running BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing outputs) [@tseng:2025r] already streamline acoustic analyses. A key application of BirdNET results is occupancy modeling, which estimates species occurrence and detectability [@wood:2023]. However, occupancy packages in R—such as `unmarked` [@fiske:2011], `ubms` [@kellner:2021], and `spOccupancy` [@doser:2022]—require tightly structured detection matrices that are difficult to prepare from BirdNET’s raw predictions. This formatting hurdle slows analysis and discourages ecologists who lack advanced programming skills.
+
+Enhancing birdnetTools to directly convert BirdNET predictions into model-ready detection matrices will close this gap, enabling researchers and conservation practitioners to move efficiently from raw audio to reproducible occupancy estimates.
+
 
 # The proposal
 
@@ -144,9 +149,10 @@ What does the high-level architecture look like?
 -->
 ```
 
-We will expand `birdnetTools` functions to transform BirdNET detections into presence/absence detection matrix (input for `spOccupancy`, `unmarked`, and `ubms`). This data-wrangling path links related but currently disconnected R packages, as illustrated in @fig-workflow A. BirdNET generates animal observations, which ccupancy modeling require in a specific format, the **detection matrix**, which is a (sites × surveys) matrix indicating species presence or absence.
 
-New function(s) will streamline the creation of the **detection matrix** by building on existing `birdnetTools` capabilities (e.g., data import, cleaning, validation) and adding tools to extract site and survey information (which can optionally be added to an occupancy model), aggregate detections, and reshape outputs into the formats required by three of the most common R-based occupancy modeling packages, `spOccupancy`, `unmarked`, and `ubms`. The proposed workflow is shown in @fig-workflow B.
+`birdnetTools 2.0` will streamline the workflow from BirdNET outputs to occupancy models in R (@fig-workflow A). The package will produce the **detection matrix**, a (site × survey) matrix indicating species presence (1), absence (0), or missing data (NA), ready for use in `spOccupancy`, `unmarked`, and `ubms`. Building on existing functions for data import, cleaning, and validation, new core functions (e.g., `birdnet_det_mat()`) will extract site and survey information, aggregate detections, and reshape outputs into the formats required by these occupancy packages (@fig-workflow B). Example vignettes will guide users through end-to-end analyses, from BirdNET predictions to occupancy modeling results, with minimal additional coding.
+
+
 
 ![Workflow from raw audio files to occupancy models. Black arrows and graphics represent the current workflow, while red text and arrows indicate the proposed extensions for the package expansion.](./figure/architecture_1.jpg){#fig-workflow fig-align="center" width="80%"}
 
@@ -167,6 +173,8 @@ What is the smallest thing you can build that delivers value to your users?
 -->
 ```
 
+
+
 The minimum viable product will be a core function, `birdnet_det_mat()`, which converts BirdNET’s long-format prediction tables into a site × survey **detection matrix**, the critical missing piece in the existing software ecosystem. This matrix will contain 1s (species detected above a specified confidence score), 0s (audio recorded but no qualifying detections), and NAs (no recording during that interval). That table, the **detection matrix**, can readily be ingested by `spOccupancy`, `unmarked`, or `ubms` (e.g., via functions `PGOcc()`, `occu()`, or `stan_occu()`, respectively).
 
 ```{=html}
@@ -179,10 +187,26 @@ What external dependencies does the project have (e.g. libraries, services, othe
 
 # Project plan
 
-## Start-up phase
+
+The project will run over five months, starting with setup and continuing through development, testing, and release:
+
+- Month 1 – Start-up: Confirm open-source license (MIT) and set up the GitHub repository with contribution guidelines and issue templates. Establish reporting and feedback workflows, including bi-weekly check-ins, and draft the initial project roadmap.
+
+- Months 2 & 3 – Development: Implement and test initial occupancy-specific functions in `birdnetTools` (minimum viable product).
+
+- Month 4 – Workflows and vignettes: Create example analyses demonstrating end-to-end workflows from BirdNET outputs to occupancy models.
+
+- Month 5 – Testing and release: Conduct community testing, refine functions and documentation, and prepare for package release.
+
+Long-term, the package will be distributed via CRAN and/or the rOpenSci R-universe, and project outcomes will be communicated through R Consortium blog posts and community events (e.g., useR!, ISC meetings).
+
+
+
 
 ```{=html}
 <!--
+
+## Start-up phase
 Covering the planning phase, this section should provide a relatively
 detailed plan of how work will start on the project. This section is
 important because projects need to get up and running quickly.
@@ -191,46 +215,51 @@ important because projects need to get up and running quickly.
  - [ ] Setting up collaboration platform inc. code for contributors etc.
  - [ ] Licence decisions
  - [ ] Reporting framework
+ 
+ The planning phase will be completed within the first month of the project:
+
+
+-   [ ] Confirm open-source license (MIT) and set up the GitHub repository with contribution guidelines and issue templates.
+
+-   [ ] Establish reporting and feedback workflows, including bi-weekly check-ins with collaborators.
+
+-   [ ] Draft the initial project roadmap and share with collaborators for feedback.
+
+ 
 -->
 ```
 
-The planning phase will be completed within the first month of the project:
 
--   [ ] Confirm and document open-source license (MIT).
 
--   [ ] Set up GitHub repository with contribution guidelines, code of conduct, and issue templates.
 
--   [ ] Establish reporting and feedback workflow via GitHub Issues/Discussions.
 
--   [ ] Draft initial project roadmap and share with collaborators for feedback.
-
--   [ ] Schedule bi-weekly check-ins between project contributors.
-
-## Technical delivery
 
 ```{=html}
 <!--
+
+## Technical delivery
 Covering the actual delivery of the project this section should
 provide at least a high-level description of the implementation.
 
 Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
+
+- Month 2: Finalize function specifications and data format requirements.
+
+- Month 3: Develop and test initial occupancy-specific functions in `birdnetTools` (minimum viable product).
+
+- Month 4: Create example workflows and vignettes demonstrating end-to-end analyses.
+
+- Month 5: Conduct community testing, refine functions and documentation, and prepare for package release.
+
+Long-term, the package will be distributed via CRAN and/or the rOpenSci R-universe to ensure broad accessibility. Project updates and outcomes will also be communicated through R Consortium blog posts and community events (e.g., useR!, ISC meetings).
+
+
 -->
 ```
 
-The technical delivery phase will span months 2 to 5 of the project. Key milestones include:
 
--   [ ] Month 2.: Finalize function specifications and data format requirements in collaboration with `spOccupancy` developers.
 
--   [ ] Month 3: Develop and test initial versions of occupancy-specific functions in `birdnetTools` (i.e., the minimum viable product).
-
--   [ ] Month 4: Create example workflows and vignettes demonstrating end-to-end analyses.
-
--   [ ] Month 5: Conduct community testing, gather feedback, refine functions, and prepare for package release.
-
--   [ ] Long term: The package will be distributed via CRAN and/or the rOpenSci R-universe to ensure broad accessibility for R users worldwide.
-
--   [ ] Long term: Project updates and outcomes will be communicated through posts on the R Consortium blog, as well as via relevant R community events (e.g., useR! conference, ISC meetings).
 
 ```{=html}
 <!--
@@ -271,7 +300,7 @@ out to us.
 -->
 ```
 
-We request funding to support personnel time for developing, testing, and documenting the new `birdnetTools` functionality. Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 36/hour**.
+Estimated costs are based on a five-month project divided into three deliverable-based milestones, calculated at an hourly rate of **USD 36/hour**.
 
 | Milestone | Deliverables | Hours (Sunny + Connor) | Estimated cost (USD) |
 |------------------|------------------|------------------|------------------|
@@ -289,7 +318,7 @@ thorough understanding going in of what the risks are to delivery
 -->
 ```
 
-This project will be considered successful when `birdnetTools` 2.0 provides a stable, CRAN-ready release that enables users to convert BirdNET output into detection matrices and fit occupancy models in `spOccupancy`, `unmarked`, or `ubms` with minimal additional coding. Success will be measured by (1) the release of the new core function(s) (e.g., `birdnet_det_mat()`) and accompanying vignettes, (2) positive feedback and reproducible test results from community beta testing, and (3) adoption of the new workflow by early users as demonstrated through GitHub issues, discussions, and citations.
+This project will be considered successful when `birdnetTools 2.0` provides a stable, CRAN-ready release that enables users to convert BirdNET output into detection matrices and fit occupancy models in `spOccupancy`, `unmarked`, or `ubms` with minimal additional coding. Success will be measured by (1) the release of the new core function(s) (e.g., `birdnet_det_mat()`) and accompanying vignettes, (2) positive feedback and reproducible test results from community beta testing, and (3) adoption of the new workflow by early users as demonstrated through GitHub issues, discussions, and citations.
 
 Building on the proposed detection-matrix functionality, a logical next step will be to develop additional helper functions that support occupancy model covariates. For example, a `birdnet_effort_mat()` function could generate a matrix with the same site × survey dimensions as the detection matrix but populated with the number of input audio files per interval. This “effort matrix” would provide a straightforward detection covariate for occupancy modeling and further streamline the workflow from raw audio to model-ready inputs.
 
