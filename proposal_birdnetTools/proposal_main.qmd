@@ -4,7 +4,7 @@ author:
   - name: Sunny Tseng
     orcid: 0000-0002-8621-2244
     affiliations:
-      - "Natural Resources and Environmental Studies, University of Northern British Columbia"
+      - "Natural Resources & Environmental Studies, University of Northern British Columbia"
 
   - name: Connor M. Wood
     orcid: 0000-0002-0235-5214
@@ -14,9 +14,6 @@ author:
 date: today
 date-format: iso
 format:
-  html:
-    figure-dir: figure
-    embed-resources: true
   pdf:
     figure-dir: figure
     geometry:
@@ -67,13 +64,13 @@ to the project.
 -->
 ```
 
-##### Sunny (Yi-Chin) Tseng – PhD Candidate, University of Northern British Columbia, Canada
+##### Sunny (Yi-Chin) Tseng – PhD Candidate, University of Northern British Columbia
 
 Sunny is an avian bioacoustic ecologist and the creator of `birdnetTools`, an R package for post-processing BirdNET output. Sunny’s expertise combines bioacoustics and quantitative ecology to monitor bird communities at landscape scales. She has conducted bird acoustic research in Siberia, Taiwan, Canada, and Lithuania, collecting audio recordings from over 300 species. For this project, Sunny will lead package development, maintain the repository, and update functions and documentation based on user feedback.
 
 ##### Connor M. Wood – Research Faculty, Cornell Lab of Ornithology
 
-Connor is a researcher with the K. Lisa Yang Center for Conservation Bioacoustics with the Cornell Lab of Ornithology. His researche focuses on population ecology and conservation biology, and his team generally applies machine learning tools to extract biodiversity data from large-scale audio datasets. He has extensive experience developing and implementing bioacoustic tools to inform conservation strategies, and regularly uses BirdNET outputs as occupancy model inputs. For this project, Connor will provide expertise on occupancy modeling and statistical methods, ensuring the package outputs are ecologically relevant and meet the needs of end users.
+Connor is a researcher with the K. Lisa Yang Center for Conservation Bioacoustics with the Cornell Lab of Ornithology. His research focuses on population ecology and conservation biology, and his team generally applies machine learning tools to extract biodiversity data from large-scale audio datasets. He has extensive experience developing and implementing bioacoustic tools to inform conservation strategies, and regularly uses BirdNET outputs as occupancy model inputs. For this project, Connor will provide expertise on occupancy modeling and statistical methods, ensuring the package outputs are ecologically relevant and meet the needs of end users.
 
 ```{=html}
 <!--
@@ -112,9 +109,9 @@ It is important to cover:
 -->
 ```
 
-BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, capable of recognizing more than 6,000 species [@kahl:2021]. R packages such as `birdnetR` (for running BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] streamline acoustic data analysis. A key application of BirdNET outputs is generating species presence–absence data for occupancy modeling, which provides estimates of species distribution, detectability, and occurrence (e.g., @wood:2023). However, preparing BirdNET outputs for these models is challenging, especially for users without advanced programming skills. Existing R packages for occupancy analysis, including `unmarked` (Fiske and Chandler 2011), `ubms` (Kellner 2024), and `spOccupancy` [@doser:2022], require highly specific data formats and multi-step workflows, creating barriers to efficient and reproducible analysis.
+BirdNET is the most widely used algorithm for automated bird species identification from audio recordings, capable of recognizing more than 6,000 species [@kahl:2021]. R packages such as `birdnetR` (for running BirdNET) [@gunther:2025] and `birdnetTools` (for post-processing BirdNET outputs) [@tseng:2025r] streamline acoustic data analysis. A key application of BirdNET outputs is generating species presence–absence data for occupancy modeling, which provides estimates of species distribution, detectability, and occurrence (e.g., @wood:2023). However, preparing BirdNET outputs for these models is challenging, especially for users without advanced programming skills. Existing R packages for occupancy analysis, including `unmarked` [@fiske:2011], `ubms` [@kellner:2021], and `spOccupancy` [@doser:2022], require highly specific data formats and multi-step workflows, creating barriers to efficient and reproducible analysis.
 
-This project aims to reduce the gap between BirdNET’s raw detection tables and the structured inputs required by occupancy models. By enhancing `birdnetTools`, which already handles data import, cleaning, and summarization, we will add function(s) to transform BirdNET predictions into detection matrices and provide streamlined workflows specifically tailored for occupancy modeling. By facilitating the linkage of existing R packages, this project will enable ecologists and conservation practitioners to move from raw audio to model-ready data with minimal effort. 
+This project aims to reduce the gap between BirdNET’s raw detection tables and the structured inputs required by occupancy models. By enhancing `birdnetTools`, which already handles data import, cleaning, and summarization, we will add function(s) to transform BirdNET predictions into detection matrices and provide streamlined workflows specifically tailored for occupancy modeling. By facilitating the linkage of existing R packages, this project will enable ecologists and conservation practitioners to move from raw audio to model-ready data with minimal effort.
 
 # The proposal
 
@@ -278,10 +275,10 @@ We request funding to support personnel time for developing, testing, and docume
 
 | Milestone | Deliverables | Hours (Sunny + Connor) | Estimated cost (USD) |
 |------------------|------------------|------------------|------------------|
-| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 16 | \$1,008 |
+| Phase 1 Planning (2025 Dec.1 - 31) | Finalize data formats and function specs. | 12 + 12 | \$864 |
 | Phase 2 Development (2026 Jan.1 - Mar.31) | Implement core functions, create example workflows. | 80 + 16 | \$3,456 |
 | Phase 3 Testing & release (2026 Apr.1 - 30) | Conduct community testing, refine code and documentation | 60 + 28 | \$3,168 |
-| Total |  | 152 + 60 = 212 | \$7,632 |
+| Total |  | 152 + 56 = 208 | \$7,488 |
 
 # Success
 
@@ -292,11 +289,9 @@ thorough understanding going in of what the risks are to delivery
 -->
 ```
 
-
 This project will be considered successful when `birdnetTools` 2.0 provides a stable, CRAN-ready release that enables users to convert BirdNET output into detection matrices and fit occupancy models in `spOccupancy`, `unmarked`, or `ubms` with minimal additional coding. Success will be measured by (1) the release of the new core function(s) (e.g., `birdnet_det_mat()`) and accompanying vignettes, (2) positive feedback and reproducible test results from community beta testing, and (3) adoption of the new workflow by early users as demonstrated through GitHub issues, discussions, and citations.
 
-
-
+Building on the proposed detection-matrix functionality, a logical next step will be to develop additional helper functions that support occupancy model covariates. For example, a `birdnet_effort_mat()` function could generate a matrix with the same site × survey dimensions as the detection matrix but populated with the number of input audio files per interval. This “effort matrix” would provide a straightforward detection covariate for occupancy modeling and further streamline the workflow from raw audio to model-ready inputs.
 
 ```{=html}
 
@@ -307,8 +302,6 @@ What does success look like?
 -->
 ```
 
-
-
 ```{=html}
 <!--
 ## Measuring success
@@ -317,8 +310,6 @@ How will we know when success is achieved, what markers can we use
 along the way
 -->
 ```
-
-
 
 ```{=html}
 <!--
